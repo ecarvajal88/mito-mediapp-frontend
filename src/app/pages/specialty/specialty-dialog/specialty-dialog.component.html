@@ -1,0 +1,18 @@
+<mat-dialog-content>
+    <mat-toolbar><span>Specialty Info</span></mat-toolbar>
+</mat-dialog-content>
+
+<div class="example-container">
+
+    <mat-form-field>
+        <input matInput placeholder="Name" [(ngModel)]="specialty.nameSpecialty">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="Description" [(ngModel)]="specialty.descriptionSpecialty">
+    </mat-form-field>
+
+    <button mat-button (click)="operate()">Done</button>
+    <button mat-button color="warn" (click)="close()">Cancel</button>
+
+</div>
