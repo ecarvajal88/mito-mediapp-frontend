@@ -5,6 +5,7 @@ import { PatientComponent } from "./patient/patient.component";
 import { ExamComponent } from "./exam/exam.component";
 import { SpecialtyComponent } from "./specialty/specialty.component";
 import { ConsultWizardComponent } from "./consult-wizard/consult-wizard.component";
+import { SearchComponent } from "./search/search.component";
 
 export const pagesRoutes: Routes = [
     { path: 'patient', component: PatientComponent, children: [
@@ -14,5 +15,6 @@ export const pagesRoutes: Routes = [
     { path: 'medic', component: MedicComponent},
     { path: 'exam', component: ExamComponent},
     { path: 'specialty', component: SpecialtyComponent},
-    { path: 'consult-wizard', component: ConsultWizardComponent}
+    { path: 'consult-wizard', component: ConsultWizardComponent},
+    { path: 'search', component: SearchComponent}
 ]

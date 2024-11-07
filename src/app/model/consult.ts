@@ -6,7 +6,7 @@ export class Consult{
     idConsult: number;
     patient: Patient;
     medic: Medic;
-    idUser: string;
+    idUser: number;
     consultDate: string;
     numConsult: string;
     details: ConsultDetail[];
