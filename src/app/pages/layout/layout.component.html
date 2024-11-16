@@ -31,9 +31,19 @@
     <mat-sidenav-container class="example-sidenav-container">
         <mat-sidenav #sidenav style="width: 250px" mode="push">
 
-            <img src="mitocode.png" width="128" style="margin-left: 20px">     
+            <img src="mitocode.png" width="128" style="margin-left: 20px">   
 
-            <mat-divider></mat-divider>
+            @for (m of menus; track $index) {
+
+                <mat-divider></mat-divider>
+                <button class="myButton"  [routerLinkActive]="['active']"  mat-menu-item (click)="sidenav.toggle()"
+                    routerLink="{{m.url}}" style="cursor: pointer">
+                    <mat-icon>{{m.icon}}</mat-icon>
+                    <span>{{m.name}}</span>
+                </button>
+            }        
+
+            <!-- <mat-divider></mat-divider>
             <button class="myButton"  [routerLinkActive]="['active']"  mat-menu-item (click)="sidenav.toggle()"
                 routerLink="/pages/search" style="cursor: pointer">
                 <mat-icon>search</mat-icon>
@@ -75,7 +85,7 @@
                 <mat-icon>assessment</mat-icon>
                 <span>Report</span>
             </button>
-            <mat-divider></mat-divider>
+            <mat-divider></mat-divider> -->
         </mat-sidenav>
 
         <mat-sidenav-content>

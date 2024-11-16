@@ -25,3 +25,9 @@
 }
 
 <button mat-button (click)="upload()" [disabled]="!selectedFiles">Upload</button>
+
+<button mat-button (click)="viewImage()">View Image</button>
+
+@if(imageData){ 
+    <img mat-card [src]="imageSignal()" width="500" height="500">
+}

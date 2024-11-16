@@ -31,13 +31,19 @@ export class PatientComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
+  totalElements: number = 0;
+
   constructor(
     private patientService: PatientService,
     private _snackBar: MatSnackBar
   ){}
 
   ngOnInit(): void {
-      this.patientService.findAll().subscribe(data => {
+      /*this.patientService.findAll().subscribe(data => {
+        this.createTable(data);
+      });*/
+
+      this.patientService.listPageable(0, 1).subscribe(data => {
         this.createTable(data);
       });
 
@@ -46,10 +52,11 @@ export class PatientComponent implements OnInit {
       //this.patientService.patientChange.asObservable().subscribe(data => console.log(data));
   }
 
-  createTable(data: Patient[]){
-    this.dataSource = new MatTableDataSource(data);
+  createTable(data: any){
+    this.dataSource = new MatTableDataSource(data.content);
     this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
+    //this.dataSource.paginator = this.paginator;
+    this.totalElements = data.totalElements;
   }
 
   getDisplayedColumns(){
@@ -67,6 +74,11 @@ export class PatientComponent implements OnInit {
       this.patientService.setPatientChange(data);
       this.patientService.setMessageChange('DELETED!');
     })
+  }
+
+  showMore(e: any){
+    //console.log(e);
+    this.patientService.listPageable(e.pageIndex, e.pageSize).subscribe(data => this.createTable(data));
   }
 
 }

@@ -52,4 +52,8 @@ export class ConsultService {
 
     return this.http.post(`${this.url}/saveFile`, formdata);
   }
+
+  readFile(id: number){
+    return this.http.get(`${this.url}/readFile/${id}`, { responseType: 'blob'});
+  }
 }
